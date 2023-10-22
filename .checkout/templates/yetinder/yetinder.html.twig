@@ -1,0 +1,49 @@
+{% extends 'yetinder/base.html.twig' %}
+
+{% block header %}
+    <script>
+        let userEmail = "{{ app.user ? app.user.email : '' }}";
+        let assetUrl = "{{ asset('uploads/photos/') }}";
+        let yetis = {{ yeti|json_encode|raw }};
+    </script>
+    {{ encore_entry_script_tags('geo_distance') }}
+    {{ encore_entry_script_tags('yetinder_display') }}
+    {{ encore_entry_script_tags('star_rating') }}
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center my-4">Ohodnoťte yettiho 1-5 hvězdičkami</h1>
+    <div class="alert alert-danger d-none" id="error-message"></div>
+
+
+    <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="card mb-5 rounded-3 shadow-sm px-0" id="card">
+            <div class="card-header py-3 text-center">
+                <h4 class="my-0 fw-medium" id="yetiName"></h4>
+            </div>
+            <div class="card-body">
+                <img class="card-img-top mb-3 shadow" id="yetiPhoto" src="" alt="Yetti">
+
+                <div class="rating d-flex justify-content-center" id="rating">
+                    <span class="star" data-value="1"></span>
+                    <span class="star mx-md-1" data-value="2"></span>
+                    <span class="star" data-value="3"></span>
+                    <span class="star mx-md-1" data-value="4"></span>
+                    <span class="star" data-value="5"></span>
+                </div>
+
+                <ul class="list-unstyled mt-1 text-start list-group list-group-flush">
+                    <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Pohlaví: </p></div> <div class="col"><p id="yetiSex"></p></div></div></li>
+                    <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Věk: </p></div> <div class="col"><p id="yetiAge"></p></div></div></li>
+                    <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Výška: </p></div> <div class="col"><p id="yetiHeight"></p></div></div></li>
+                    <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Váha: </p></div> <div class="col"><p id="yetiWeight"></p></div></div></li>
+                    <li class="list-group-item mt-3 pb-0"><div class="row"><div class="col-5"><p class="fw-medium">Bydliště: </p></div> <div class="col"><p id="yetiAddress"></p><p id="yetiDistance"></p></div></div></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock %}

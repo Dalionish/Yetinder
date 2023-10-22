@@ -1,0 +1,48 @@
+@import '~bootstrap';
+
+html {
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.container {
+    max-width: 960px;
+}
+
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.card-deck .card {
+    min-width: 220px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.card-body p {font-size: 1.25rem}
+.card-body img{height: 256px}
+.col-5{white-space: nowrap}
+
+form label{margin-top: 0.5rem;}
+.form-error-icon{color: #B0413E}
+
+
+.rating {
+    display: inline-block;
+}
+
+.star {
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    display: inline-block;
+}

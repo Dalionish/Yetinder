@@ -1,0 +1,51 @@
+{% extends 'yetinder/base.html.twig' %}
+
+{% block header %}
+    <script>
+        let ratings = {{ yeti|json_encode|raw }};
+    </script>
+    {{ encore_entry_script_tags('stars_bestof') }}
+{% endblock %}
+
+{% block content %}
+    {% for message in app.flashes('successLogin') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('successLogout') %}
+        <div class="alert alert-warning">{{ message }}</div>
+    {% endfor %}
+    <h1 class="text-center my-4">10 Nejlépe hodnocených yetti!</h1>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mb-3 text-center">
+        {% for row in yeti%}
+        <div class="col">
+            <div class="card mb-5 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-medium d-inline-block">{{loop.index}}.</h4> <h4 class="my-0 fw-normal d-inline-block">{{ row.yetiName }}</h4>
+                </div>
+                <div class="card-body">
+                    <img class="card-img-top mb-3 shadow" src="{{ asset('uploads/photos/' ~ row.imageName) }}" alt="Yetti">
+
+                    <div class="rating d-flex justify-content-center" id="{{loop.index}}" title="">
+                        <span class="star" data-value="1"></span>
+                        <span class="star mx-md-1" data-value="2"></span>
+                        <span class="star" data-value="3"></span>
+                        <span class="star mx-md-1" data-value="4"></span>
+                        <span class="star" data-value="5"></span>
+                    </div>
+
+                    <ul class="list-unstyled mt-3 text-start list-group list-group-flush">
+                        <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Pohlaví: </p></div> <div class="col"><p>{{ row.sex }}</p></div></div></li>
+                        <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Věk: </p></div> <div class="col"><p>{{ row.age }} let</p></div></div></li>
+                        <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Výška: </p></div> <div class="col"><p>{{ row.height}} cm</p></div></div></li>
+                        <li class="list-group-item mt-3"><div class="row"><div class="col-5"><p class="fw-medium">Váha: </p></div> <div class="col"><p>{{ row.weight}} kg</p></div></div></li>
+                        <li class="list-group-item mt-3 pb-0"><div class="row"><div class="col-5"><p class="fw-medium">Bydliště: </p></div> <div class="col"><p>{{ row.address }}</p></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}

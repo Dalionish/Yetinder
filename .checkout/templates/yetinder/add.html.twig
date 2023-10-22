@@ -1,0 +1,43 @@
+{% extends 'yetinder/base.html.twig' %}
+
+{% block header %}
+    <!--Nepodarilo se mi zprovoznit import z node_modules prez webpack-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqtraj-gBMA2qw9ZGD584GR0NpPY6V3v0&libraries=places"></script>
+    {{ encore_entry_script_tags('map_script') }}
+{% endblock %}
+
+{% block content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+
+    <h1>Přidej yettiho!</h1>
+    {{ form_start(addForm)}}
+    {{ form_errors(addForm) }}
+    {{ form_row(addForm.name) }}
+    {{ form_row(addForm.sex) }}
+    {{ form_row(addForm.age) }}
+    {{ form_row(addForm.height, {
+        'attr': {
+            'placeholder': 'cm',
+        }
+    }) }}
+    {{ form_row(addForm.weight, {
+        'attr': {
+            'placeholder': 'kg',
+        }
+    }) }}
+    {{ form_row(addForm.photoFile) }}
+    {{ form_row(addForm.latitude) }}
+    {{ form_row(addForm.longitude) }}
+    {{ form_row(addForm.address) }}
+    <p class="mb-0 mt-2">Vyberte místo na mapě:</p>
+    <div id="map" class="mb-2" style="height: 400px;"></div>
+
+    <button type="submit" class="btn btn-lg btn-primary">Přidat!</button>
+    {{ form_end(addForm) }}
+
+{% endblock %}

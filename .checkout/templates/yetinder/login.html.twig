@@ -1,0 +1,29 @@
+{% extends 'yetinder/base.html.twig' %}
+
+{% block content %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('loginFailure') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+    <h1>Přihlásit</h1>
+    {{ form_start(loginForm, {'attr': {'action': path('best_of')}}) }}
+    {{ form_row(loginForm.email) }}
+    {{ form_row(loginForm.password) }}
+    {{ form_errors(loginForm) }}
+
+    <button type="submit" class="btn btn-lg btn-primary mt-2 mb-5">Přihlásit!</button>
+    {{ form_end(loginForm) }}
+
+    <h1>Zaregistrovat</h1>
+    {{ form_start(registerForm)}}
+    {{ form_row(registerForm.email) }}
+    {{ form_row(registerForm.password) }}
+    {{ form_row(registerForm.password2) }}
+    {{ form_errors(registerForm) }}
+
+    <button type="submit" class="btn btn-lg btn-primary mt-2">Zaregistrovat!</button>
+    {{ form_end(registerForm) }}
+{% endblock %}

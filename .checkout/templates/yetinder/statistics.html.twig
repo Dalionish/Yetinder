@@ -1,0 +1,48 @@
+{% extends 'yetinder/base.html.twig' %}
+
+{% block header %}
+    <script>
+        let currentPage = "{{ slug }}";
+        let data = {{ data|json_encode|raw }};
+        let href = "{{path('statistics')}}"
+    </script>
+    {{ encore_entry_script_tags('statistics_display') }}
+{% endblock %}
+
+{% block content %}
+    <h1>Statistika všech hodnocení za určité období</h1>
+    <form>
+        <div class="form-group col-2 pb-2">
+            <label for="input">Vyberte období</label>
+            <select class="form-control" id="input">
+                <option value="24h" id="24h">24 hodin</option>
+                <option value="7d" id="7d">7 dní</option>
+                <option value="30d" id="30d">30 dní</option>
+                <option value="1y" id="1y">1 rok</option>
+                <option value="all" id="all">Vše</option>
+            </select>
+        </div>
+    </form>
+    <table class="table">
+        <thead class="table-light">
+        <tr>
+            <th scope="col">Datum | Čas</th>
+            <th scope="col">Uživatel</th>
+            <th scope="col">Yeti</th>
+            <th scope="col">Hodnocení</th>
+        </tr>
+        </thead>
+        <tbody id="parent">
+        </tbody>
+    </table>
+
+    <nav>
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" id="previous" href="">Předchozí</a></li>
+            <li class="page-item"><a class="page-link" id="firstPage" href="">1</a></li>
+            <li class="page-item"><a class="page-link" id="secondPage" href="">2</a></li>
+            <li class="page-item"><a class="page-link" id="thirdPage" href="">3</a></li>
+            <li class="page-item"><a class="page-link" id="next" href="">Další</a></li>
+        </ul>
+    </nav>
+{% endblock %}

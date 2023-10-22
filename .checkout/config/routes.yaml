@@ -1,0 +1,17 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+rating_controller:
+    path: /rating_controller
+    controller: App\Controller\YetinderController::yetinderRating
+
+statistics:
+    path: /Statistics/{slug}
+    controller: App\Controller\StatisticsController::statistics
+    requirements:
+        slug: \d*
+    defaults:
+        slug: '1'
