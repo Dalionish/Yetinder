@@ -1,7 +1,7 @@
 # YETINDER
 Aplikace yetinder dle zadání (přiloženo v mailu)
 ## Základní popis
-- Aplikaci jsem tvořil s Symfony frameworku v PhpStormu
+- Aplikaci jsem tvořil v Symfony frameworku v PhpStormu
 - Pro tvorbu frontendu jsem využil boostrapu a použil jsem předpřipravenou base page jak bylo doporučeno v zadání (bootstrap example ["Pricing"](https://getbootstrap.com/docs/5.1/examples/pricing/))
 - Do databáze jsem se dotazoval přes vrstvu DBAL s Doctrine QueryBuilder jak bylo doporučeno v zadání. Využil jsem MySql databázi, kterou jsem připojil z docker containeru.
 - Pro spuštění jsem využíval integrovaný Symfony server.
