@@ -5,6 +5,7 @@ Aplikace yetinder dle zadání (přiloženo v mailu)
 - Pro tvorbu frontendu jsem využil boostrapu a použil jsem předpřipravenou base page jak bylo doporučeno v zadání (bootstrap example ["Pricing"](https://getbootstrap.com/docs/5.1/examples/pricing/))
 - Do databáze jsem se dotazoval přes vrstvu DBAL s Doctrine QueryBuilder jak bylo doporučeno v zadání. Využil jsem MySql databázi, kterou jsem připojil z docker containeru.
 - Pro spuštění jsem využíval integrovaný Symfony server.
+- V souboru .checkout se nachází samotná aplikace, v dump.sql se nachází dump mysql databáze.
 
 ## Části aplikace
 Má aplikace je rozdělena do 5 funkčních částí - stránek, 
